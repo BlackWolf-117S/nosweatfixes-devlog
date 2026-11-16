@@ -6,17 +6,17 @@ The game and its gameplay video are on our submission page for the jam.
 
 ![Six moments from the build: main menu, shop, a short circuit, burst pipes, the attic circuits and the ghost](img/00-cover.jpg)
 
-No Sweat Fixes is a co-op repair game for 2 to 4 players. You are a crew of handymen sent into a house where everything fails at once. Open a valve too fast and a pipe bursts. Let the puddle reach a bare wire and the water is live. Swap a fuse with the power on and you burn the spare and yourself. And a ghost, built as a prototype during the jam, cuts the lights and opens valves behind your back. The crew shares one wallet, buys supplies in the lobby, votes on the job at a blueprint board, and is paid for what it actually fixes.
+No Sweat Fixes is a co-op repair game for 2 to 4 players. You are a crew of handymen sent into a house where everything fails at once. Open a valve too fast and a pipe bursts. Let the puddle reach a bare wire and the water is live. Swap a fuse with the power on and you burn the spare and yourself. And a ghost stalks the house, more aggressive with every repair you finish and every word you say on the radio. The crew shares one wallet, buys supplies in the lobby, votes on the job at a blueprint board, and is paid for what it actually fixes.
 
 We read the jam theme as free direction: the director is whoever is making the game, so this is our cut. Four people directed a crew of AI agents, kept what felt right when we played it, and cut what did not, such as the automatic camera zoom, the 3D characters in the menu and a misleading prompt on the bare cable.
 
-This page is the English edition of the build diary we kept during the jam. The raw diary was written in Spanish, our working language, while we built: 45 entries, 345 screenshots, 193 machine-written JSON reports and 20 logs. Captures and reports were taken as we built. Every claim below comes from one of those entries or from the commit history.
+This page is the English edition of the build diary we kept during the jam. The raw diary was written in Spanish, our working language, while we built: 50 entries, 361 screenshots, 212 machine-written JSON reports and 29 logs. Captures and reports were taken as we built. Every claim below comes from one of those entries or from the commit history.
 
 ## Four people, four days, and an engine we barely knew
 
 There are four of us, and most of us have full-time jobs. When the jam opened we had practically no idea how to use Unreal Engine 5. We had ideas for a game, less than four days, and whatever hours were left after work.
 
-The commit history shows where those hours came from. Thursday and Friday were working days, and 50 of our 153 commits landed between midnight and 7 AM.
+The commit history shows where those hours came from. Thursday and Friday were working days, and 50 of our 163 commits landed between midnight and 7 AM our time.
 
 The jam allowed AI as a support tool, and we leaned on it to learn the engine as we went. We found out quickly that asking an AI for help is one thing and getting everything to work the way you want is another. Following its instructions was not always enough, and more than once the answer it gave us was wrong. Each time, one of us had to play the game, notice what was off and decide what to do. The section "What broke" is the record of those moments.
 
@@ -28,16 +28,17 @@ No Sweat Fixes is what happens when four people learn, experiment and decide unt
 
 | | |
 |---|---|
-| First commit | Wed Nov 11, 23:13 CST, 13 minutes after the jam opened |
-| Last commit before this page was written | Sun Nov 15, 16:44 CST |
-| Commits | 153 (3, 25, 30, 45 and 50 per calendar day) |
-| Commits made between midnight and 7 AM | 50 |
+| Jam window | Thu Nov 12, 00:00 EST to Sun Nov 15, 20:59 EST |
+| First commit | Thu Nov 12, 00:13 EST, 13 minutes after the jam opened |
+| Last commit before the jam closed | Sun Nov 15, 20:00 EST |
+| Commits during the jam | 163 (21, 34, 38 and 70 per day, Thursday to Sunday) |
+| Commits made between midnight and 7 AM, our local time | 50 |
 | Pull requests merged | 5 |
 | People | 4 |
 | C++ in the project's plugins | about 17,000 lines |
 | Named automation tests (`NoSweat.*`) | about 40 |
 | Editor automation scripts, mostly Python | about 200 |
-| Diary entries / screenshots / JSON reports | 45 / 345 / 193 |
+| Diary entries / screenshots / JSON reports | 50 / 361 / 212 |
 
 ## The team
 
@@ -45,10 +46,10 @@ Four people. Areas are taken from the commit history.
 
 | Who | Commits | Main areas |
 |---|---|---|
-| **Jose Islas** (`BlackWolf-117S`) | 42 | Repository and integration (the 5 pull requests and the merge recoveries), the `NoSweatMultiplayer` plugin (lobby, online sessions, profiles, reconnection), mission table and voting, pipe and electricity mechanics, tutorial map, ghost actor |
-| **Alejandro Segura** (`alexby117`) | 47 | Online lobby level (models, lighting, set dressing), animated main menu, vote board, illustrated shop and HUD, solo start, Mansion as the playable mission |
-| **Atzin Domínguez** (`CosmoSka`) | 35 | Project and online configuration, main menu art and the new main menu map, the Shark character, crew animation retargeting, lobby tool interaction, all audio, light fixtures, credits, proximity voice chat and radio, settings menu |
-| **Emilio Alvarez** (`milicolobrii-lab`) | 29 | The Mansion level: structure, materials, basement, laundry and attic; the ghost mesh; graffiti and mansion test scripts |
+| **Jose Islas** (`BlackWolf-117S`) | 45 | Repository and integration (the 5 pull requests and the merge recoveries), the `NoSweatMultiplayer` plugin (lobby, online sessions, profiles, reconnection), mission table and voting, pipe and electricity mechanics, tutorial map, the ghost and its move into the Mansion |
+| **Alejandro Segura** (`alexby117`) | 49 | Online lobby level (models, lighting, set dressing), animated main menu, vote board, illustrated shop and HUD, solo start, the character wardrobe, Mansion as the playable mission |
+| **Atzin Domínguez** (`CosmoSka`) | 39 | Project and online configuration, main menu art and the new main menu map, the Shark character, crew animation retargeting, lobby tool interaction, all audio, light fixtures, credits, proximity voice chat and radio, microphone selection, settings menu |
+| **Emilio Alvarez** (`milicolobrii-lab`) | 30 | The Mansion level: structure, materials, basement, laundry and attic; the ghost mesh; graffiti and mansion test scripts |
 
 Commit counts undercount level and art work. A map is one binary file no matter how many hours went into it.
 
@@ -81,19 +82,19 @@ The fifth rule matters most with Unreal maps (see "What broke").
 
 ## Day by day
 
-Times are CST (UTC−6).
+All times on this page are US Eastern (EST, UTC−5), the jam's own clock. We live in Mexico City, one hour behind.
 
-**Day 1 — Wednesday night and Thursday, Nov 12 (28 commits).** The repository went up at 23:13. By 03:49 there was a main menu and a prototype co-op lobby. In the morning the `NoSweatMultiplayer` plugin landed with its lobby subsystem and UI (PR #1), followed by LAN test scripts. During the day: menu art, a new main menu map, the Shark character, the lobby board, a camera toggle. At 21:51 the mission table and multiplayer map voting were in (PR #2). At 23:46, online sessions through Epic Online Services, player profiles and reconnection (PR #3).
+**Day 1 — Thursday, Nov 12 (21 commits).** The repository went up at 00:13, thirteen minutes after the jam opened. By 04:49 there was a main menu and a prototype co-op lobby. In the morning the `NoSweatMultiplayer` plugin landed with its lobby subsystem and UI (PR #1), followed by LAN test scripts. During the day: menu art, a new main menu map, the Shark character, the lobby board, a camera toggle. At 22:51 the mission table and multiplayer map voting were in (PR #2).
 
-**Day 2 — Friday, Nov 13 (30 commits).** From 00:33 to 07:10 the lobby was dressed overnight and the first Mansion walls went in. In the afternoon, tool interaction in the lobby. At 19:20, pipe mechanics and a reusable pick-up tool (PR #4). At 22:52, electricity mechanics with multiplayer tests. At 22:57, animation retargeting for the crew.
+**Day 2 — Friday, Nov 13 (34 commits).** The day opened at 00:46 with online sessions through Epic Online Services, player profiles and reconnection (PR #3). From 01:33 to 08:10 the lobby was dressed overnight and the first Mansion walls went in. In the afternoon, tool interaction in the lobby. At 20:20, pipe mechanics and a reusable pick-up tool (PR #4). At 23:52, electricity mechanics with multiplayer tests. At 23:57, animation retargeting for the crew.
 
-**Day 3 — Saturday, Nov 14 (45 commits).** Another night shift from 01:13 to 07:15: lobby lamps and lighting, Mansion textures, the basement. Between 04:03 and 04:33, four recovery merges to rescue the Mansion map. During the day, diary entries 001 to 009: interaction outline, missions and shop, Meshy models, electricity, manual repair, pipes, overpressure, linked lights. At 17:54 the Job House map. At 20:57 the animated main menu with credits (PR #5). From 23:20, audio.
+**Day 3 — Saturday, Nov 14 (38 commits).** Another night shift from 02:13 to 08:15: lobby lamps and lighting, Mansion textures, the basement. Between 05:03 and 05:33, four recovery merges to rescue the Mansion map. During the day, diary entries 001 to 009: interaction outline, missions and shop, Meshy models, electricity, manual repair, pipes, overpressure, linked lights. At 18:54 the Job House map. At 21:57 the animated main menu with credits (PR #5).
 
-**Day 4 — Sunday, Nov 15 (50 commits).** From midnight to 05:17: light fixtures, the Mansion attic, the first working circuits inside Mansion, the ghost mesh. At 09:55 Mansion became the playable mission, with a "coming soon" card beside it. Then solo start, the tutorial map, the loading transition, the ghost actor at 14:11, a compile fix at 14:19, the illustrated shop and HUD, audio credits, and at 16:44 proximity voice chat, radio and the settings menu.
+**Day 4 — Sunday, Nov 15 (70 commits).** From 00:20, audio. Through the night until 06:17: light fixtures, the Mansion attic, the first working circuits inside Mansion, the ghost mesh. At 10:55 Mansion became the playable mission, with a "coming soon" card beside it. Then solo start, the tutorial map, the loading transition, the ghost actor at 15:11, a compile fix at 15:19, the illustrated shop and HUD, audio credits, and at 17:44 proximity voice chat, radio and the settings menu. In the last three hours: microphone selection, a wardrobe in the lobby to pick your character, the ghost moved into the Mansion at 18:27, and a final pass on the lobby and the mission economy at 20:00, 59 minutes before the deadline.
 
 ## Where it started
 
-On Friday at 22:39, minutes before the electricity commit, we recorded a three-minute test. Grey boxes, floating text where the UI would go, and a fox in a hard hat. Every system in the final game is already here in its roughest form: the main breaker, the valve, the pipe that bursts, the bare cable, the puddle that turns live, and the wiring.
+On Friday at 23:39, minutes before the electricity commit, we recorded a three-minute test. Grey boxes, floating text where the UI would go, and a fox in a hard hat. Every system in the final game is already here in its roughest form: the main breaker, the valve, the pipe that bursts, the bare cable, the puddle that turns live, and the wiring.
 
 | A wall of labels: breaker, valve, test pipe, exposed cable | Valve at 100%: the pipe bursts and the puddle goes live | Wiring as coloured blocks to match |
 |---|---|---|
@@ -135,11 +136,11 @@ It is the same room with the same job: a board to gather the crew and a table to
 
 The Mansion is the job the crew is sent to. It was built in four stages over the four days.
 
-| 1. A floor plan drawn with boxes (Thursday, 20:49) | 2. Volume: floors and roofs, saved as the Mansion map |
+| 1. A floor plan drawn with boxes (Thursday, 21:49) | 2. Volume: floors and roofs, saved as the Mansion map |
 |---|---|
 | ![Mansion floor plan made of box walls in an untitled map](img/42-mansion-floorplan.jpg) | ![Mansion blockout with roofs](img/43-mansion-blockout.jpg) |
 
-| 3. Materials: brick, tile and ceiling | 4. Furnished and lit: the kitchen (Sunday, 11:13) |
+| 3. Materials: brick, tile and ceiling | 4. Furnished and lit: the kitchen (Sunday, 12:13) |
 |---|---|
 | ![Mansion interior with brick walls and tiled floor](img/44-mansion-materials.jpg) | ![Mansion kitchen with generated furniture and lights](img/45-mansion-kitchen.jpg) |
 
@@ -209,6 +210,8 @@ The flashlight took three tries. At 250 lumens the centre of the beam was pure w
 
 A replicated, server-authoritative director that appears, hides, watches, and attacks when provoked or when someone lingers. The flashlight repels it some of the time, never reliably. It sabotages the job at random: it opens a valve, cuts the lights for 3 to 6 seconds, or flicks the main breaker. Each attempt has a 55% chance and a cooldown of 35 to 55 seconds, so it does not happen in every encounter.
 
+At 18:27 on Sunday the ghost moved from its test map into the Mansion mission. It now reacts to the crew: it grows more aggressive as repairs are completed and as players talk, its damage rises from 25 to 45 and its speed from 250 to 330, and transmitting on the radio provokes it more than talking nearby.
+
 | The ghost in its test map | A ghost blackout |
 |---|---|
 | ![Ghost](img/25-ghost.jpg) | ![Ghost blackout](img/26-ghost-blackout.jpg) |
@@ -219,7 +222,7 @@ A replicated, server-authoritative director that appears, hides, watches, and at
 - **Main menu.** First built with two 3D characters rendered into a transparent layer at 30 captures per second. We replaced it with an illustrated 2D layer that sways and breathes through a UI material, which removed every skeletal mesh and scene capture from the menu.
 - **Illustrated workshop UI.** Cream paper, dark blue ink, yellow actions. The supply dropdown became shop cards with picture, price and stock.
 - **Tutorial and loading.** A practice map reached from HOW TO PLAY?, with four stations, and a loading transition that closes like an iris around the logo with a spinning gear.
-- **Voice.** Proximity voice up to 20 m, and hold `Q` for a crew-wide radio with a walkie-talkie filter generated in code. Keys can be rebound, with conflict checks.
+- **Voice.** Hold `T` for proximity voice up to 20 m, and hold `Q` for a crew-wide radio with a walkie-talkie filter generated in code. Keys can be rebound, with conflict checks.
 - **Settings.** Display mode, resolution, three quality levels, master and effects volume. A display change reverts by itself after 15 seconds unless you confirm it.
 
 | Vote board before | Vote board after |
@@ -242,7 +245,7 @@ A replicated, server-authoritative director that appears, hides, watches, and at
 
 This is the part of the diary we are proudest of, because none of it was tidied away.
 
-1. **We lost the Mansion map in a merge.** A map is a binary file and Git cannot merge it. In the early hours of Saturday two people's work collided on it. The history shows four recovery merges between 04:03 and 04:33 to bring back the Mansion map together with the pipe and electricity work. On Sunday the Mansion circuit configuration went missing and had to be restored; the cause was never confirmed. The written rule is that each map has a single owner.
+1. **We lost the Mansion map in a merge.** A map is a binary file and Git cannot merge it. In the early hours of Saturday two people's work collided on it. The history shows four recovery merges between 05:03 and 05:33 to bring back the Mansion map together with the pipe and electricity work. On Sunday the Mansion circuit configuration went missing and had to be restored; the cause was never confirmed. The written rule is that each map has a single owner.
 2. **The audit passed and the screwdriver was still wrong.** The agent recoloured the Phillips screwdriver blue and its audit confirmed the size and the material reference. After restarting the editor the old orange one was back. After a forced save the audit passed again, and the screwdriver on screen was grey: the material had failed to compile. The fix was a different shader node. Our note that night: *checking references and measurements does not replace looking at the result.*
 
    | Passed the audit, visibly wrong | Final |
@@ -270,7 +273,7 @@ This is the part of the diary we are proudest of, because none of it was tidied 
 11. **Screwdrivers bought in the shop arrived as fuses.** Fixed in the delivery code.
 12. **The tutorial character slid without animating,** while the same character walked correctly in the mission. The tutorial's game mode had not assigned it.
 13. **Spray cans almost a metre tall.** 95 cm in the tutorial; now 25 cm.
-14. **Smaller ones.** A compile error from a pointer type in the UE 5.8 tests, a D3D12 crash while taking a "before" capture, and a quality dropdown that did not apply "Low" while it was open.
+14. **Smaller ones.** A compile error from a pointer type in the UE 5.8 tests, a D3D12 crash while taking a "before" capture, a quality dropdown that did not apply "Low" while it was open, and a voice test that failed three times because its authorisation never reached the server; all three failed runs are kept.
 
 ## What we did not verify
 
@@ -302,7 +305,6 @@ Nothing. The repository starts 13 minutes after the jam opened.
 
 ## If we keep building
 
-- Finish integrating the ghost into the Mansion mission.
 - Run every feature again across machines and in the packaged build.
 - Verify wire dragging with a real mouse in the automated tests.
 - Save the crew's money and cargo to disk; today they last one session.
