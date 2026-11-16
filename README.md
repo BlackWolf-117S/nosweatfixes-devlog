@@ -84,17 +84,17 @@ The fifth rule matters most with Unreal maps (see "What broke").
 
 All times on this page are US Eastern (EST, UTC−5), the jam's own clock. We live in Mexico City, one hour behind.
 
-**Day 1 — Thursday, Nov 12 (21 commits).** The repository went up at 00:13, thirteen minutes after the jam opened. By 04:49 there was a main menu and a prototype co-op lobby. In the morning the `NoSweatMultiplayer` plugin landed with its lobby subsystem and UI (PR #1), followed by LAN test scripts. During the day: menu art, a new main menu map, the Shark character, the lobby board, a camera toggle. At 22:51 the mission table and multiplayer map voting were in (PR #2).
+**Day 1 — Thursday, Nov 12 (21 commits).** The repository went up at 00:13 EST, thirteen minutes after the jam opened. By 04:49 EST there was a main menu and a prototype co-op lobby. In the morning the `NoSweatMultiplayer` plugin landed with its lobby subsystem and UI (PR #1), followed by LAN test scripts. During the day: menu art, a new main menu map, the Shark character, the lobby board, a camera toggle. At 22:51 EST the mission table and multiplayer map voting were in (PR #2).
 
-**Day 2 — Friday, Nov 13 (34 commits).** The day opened at 00:46 with online sessions through Epic Online Services, player profiles and reconnection (PR #3). From 01:33 to 08:10 the lobby was dressed overnight and the first Mansion walls went in. In the afternoon, tool interaction in the lobby. At 20:20, pipe mechanics and a reusable pick-up tool (PR #4). At 23:52, electricity mechanics with multiplayer tests. At 23:57, animation retargeting for the crew.
+**Day 2 — Friday, Nov 13 (34 commits).** The day opened at 00:46 EST with online sessions through Epic Online Services, player profiles and reconnection (PR #3). From 01:33 EST to 08:10 EST the lobby was dressed overnight and the first Mansion walls went in. In the afternoon, tool interaction in the lobby. At 20:20 EST, pipe mechanics and a reusable pick-up tool (PR #4). At 23:52 EST, electricity mechanics with multiplayer tests. At 23:57 EST, animation retargeting for the crew.
 
-**Day 3 — Saturday, Nov 14 (38 commits).** Another night shift from 02:13 to 08:15: lobby lamps and lighting, Mansion textures, the basement. Between 05:03 and 05:33, four recovery merges to rescue the Mansion map. During the day, diary entries 001 to 009: interaction outline, missions and shop, Meshy models, electricity, manual repair, pipes, overpressure, linked lights. At 18:54 the Job House map. At 21:57 the animated main menu with credits (PR #5).
+**Day 3 — Saturday, Nov 14 (38 commits).** Another night shift from 02:13 EST to 08:15 EST: lobby lamps and lighting, Mansion textures, the basement. Between 05:03 EST and 05:33 EST, four recovery merges to rescue the Mansion map. During the day, diary entries 001 to 009: interaction outline, missions and shop, Meshy models, electricity, manual repair, pipes, overpressure, linked lights. At 18:54 EST the Job House map. At 21:57 EST the animated main menu with credits (PR #5).
 
-**Day 4 — Sunday, Nov 15 (70 commits).** From 00:20, audio. Through the night until 06:17: light fixtures, the Mansion attic, the first working circuits inside Mansion, the ghost mesh. At 10:55 Mansion became the playable mission, with a "coming soon" card beside it. Then solo start, the tutorial map, the loading transition, the ghost actor at 15:11, a compile fix at 15:19, the illustrated shop and HUD, audio credits, and at 17:44 proximity voice chat, radio and the settings menu. In the last three hours: microphone selection, a wardrobe in the lobby to pick your character, the ghost moved into the Mansion at 18:27, and a final pass on the lobby and the mission economy at 20:00, 59 minutes before the deadline.
+**Day 4 — Sunday, Nov 15 (70 commits).** From 00:20 EST, audio. Through the night until 06:17 EST: light fixtures, the Mansion attic, the first working circuits inside Mansion, the ghost mesh. At 10:55 EST Mansion became the playable mission, with a "coming soon" card beside it. Then solo start, the tutorial map, the loading transition, the ghost actor at 15:11 EST, a compile fix at 15:19 EST, the illustrated shop and HUD, audio credits, and at 17:44 EST proximity voice chat, radio and the settings menu. In the last three hours: microphone selection, a wardrobe in the lobby to pick your character, the ghost moved into the Mansion at 18:27 EST, and a final pass on the lobby and the mission economy at 20:00 EST, 59 minutes before the deadline.
 
 ## Where it started
 
-On Friday at 23:39, minutes before the electricity commit, we recorded a three-minute test. Grey boxes, floating text where the UI would go, and a fox in a hard hat. Every system in the final game is already here in its roughest form: the main breaker, the valve, the pipe that bursts, the bare cable, the puddle that turns live, and the wiring.
+On Friday at 23:39 EST, minutes before the electricity commit, we recorded a three-minute test. Grey boxes, floating text where the UI would go, and a fox in a hard hat. Every system in the final game is already here in its roughest form: the main breaker, the valve, the pipe that bursts, the bare cable, the puddle that turns live, and the wiring.
 
 | A wall of labels: breaker, valve, test pipe, exposed cable | Valve at 100%: the pipe bursts and the puddle goes live | Wiring as coloured blocks to match |
 |---|---|---|
@@ -136,11 +136,11 @@ It is the same room with the same job: a board to gather the crew and a table to
 
 The Mansion is the job the crew is sent to. It was built in four stages over the four days.
 
-| 1. A floor plan drawn with boxes (Thursday, 21:49) | 2. Volume: floors and roofs, saved as the Mansion map |
+| 1. A floor plan drawn with boxes (Thursday, 21:49 EST) | 2. Volume: floors and roofs, saved as the Mansion map |
 |---|---|
 | ![Mansion floor plan made of box walls in an untitled map](img/42-mansion-floorplan.jpg) | ![Mansion blockout with roofs](img/43-mansion-blockout.jpg) |
 
-| 3. Materials: brick, tile and ceiling | 4. Furnished and lit: the kitchen (Sunday, 12:13) |
+| 3. Materials: brick, tile and ceiling | 4. Furnished and lit: the kitchen (Sunday, 12:13 EST) |
 |---|---|
 | ![Mansion interior with brick walls and tiled floor](img/44-mansion-materials.jpg) | ![Mansion kitchen with generated furniture and lights](img/45-mansion-kitchen.jpg) |
 
@@ -210,7 +210,7 @@ The flashlight took three tries. At 250 lumens the centre of the beam was pure w
 
 A replicated, server-authoritative director that appears, hides, watches, and attacks when provoked or when someone lingers. The flashlight repels it some of the time, never reliably. It sabotages the job at random: it opens a valve, cuts the lights for 3 to 6 seconds, or flicks the main breaker. Each attempt has a 55% chance and a cooldown of 35 to 55 seconds, so it does not happen in every encounter.
 
-At 18:27 on Sunday the ghost moved from its test map into the Mansion mission. It now reacts to the crew: it grows more aggressive as repairs are completed and as players talk, its damage rises from 25 to 45 and its speed from 250 to 330, and transmitting on the radio provokes it more than talking nearby.
+At 18:27 EST on Sunday the ghost moved from its test map into the Mansion mission. It now reacts to the crew: it grows more aggressive as repairs are completed and as players talk, its damage rises from 25 to 45 and its speed from 250 to 330, and transmitting on the radio provokes it more than talking nearby.
 
 | The ghost in its test map | A ghost blackout |
 |---|---|
@@ -245,7 +245,7 @@ At 18:27 on Sunday the ghost moved from its test map into the Mansion mission. I
 
 This is the part of the diary we are proudest of, because none of it was tidied away.
 
-1. **We lost the Mansion map in a merge.** A map is a binary file and Git cannot merge it. In the early hours of Saturday two people's work collided on it. The history shows four recovery merges between 05:03 and 05:33 to bring back the Mansion map together with the pipe and electricity work. On Sunday the Mansion circuit configuration went missing and had to be restored; the cause was never confirmed. The written rule is that each map has a single owner.
+1. **We lost the Mansion map in a merge.** A map is a binary file and Git cannot merge it. In the early hours of Saturday two people's work collided on it. The history shows four recovery merges between 05:03 EST and 05:33 EST to bring back the Mansion map together with the pipe and electricity work. On Sunday the Mansion circuit configuration went missing and had to be restored; the cause was never confirmed. The written rule is that each map has a single owner.
 2. **The audit passed and the screwdriver was still wrong.** The agent recoloured the Phillips screwdriver blue and its audit confirmed the size and the material reference. After restarting the editor the old orange one was back. After a forced save the audit passed again, and the screwdriver on screen was grey: the material had failed to compile. The fix was a different shader node. Our note that night: *checking references and measurements does not replace looking at the result.*
 
    | Passed the audit, visibly wrong | Final |
